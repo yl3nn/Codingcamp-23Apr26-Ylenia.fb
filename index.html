@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- MAIN -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+<!-- HEADER -->
+<body>
+ <class="theme-toggle-wrap">
+  <button id="theme-switch" aria-label="Toggle dark mode">
+    🌙 Dark Mode
+  </button>
+
+<header>
+   <h1 id="greeting">Good morning, <mark id="user-name">Guest</mark>.</h1>
+  
+  <form id="name-form" class="name-input-group">
+    <label for="name-change-input">Update Name:</label>
+    <div class="input-row">
+      <input id="name-change-input" type="text" placeholder="Your name..." maxlength="20" required />
+      <button type="submit" id="name-submit-btn">Enter</button>
+    </div>
+  </form>
+
+  <time id="time-big">00:00</time>
+  <time id="datetime" datetime=""></time>
+</header>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="card-title">Focus Timer</div>
+    <div class="timer-arc-wrap">
+      <svg class="arc-svg" width="80" height="80" viewBox="0 0 80 80">
+        <circle class="arc-bg" cx="40" cy="40" r="34"/>
+        <circle class="arc-fill" id="arc" cx="40" cy="40" r="34"
+          stroke-dasharray="213.6" stroke-dashoffset="0"/>
+      </svg>
+    </div>
+    <div class="timer-display" id="timer-display">25:00</div>
+    <div class="timer-mode-label" id="timer-mode-label">Focus</div>
+    <div class="timer-modes">
+      <button class="mode-pill active" id="pill-focus"  onclick="setTimerMode('focus',this)">Focus</button>
+      <button class="mode-pill"        id="pill-short"  onclick="setTimerMode('short',this)">Short break</button>
+      <button class="mode-pill"        id="pill-long"   onclick="setTimerMode('long',this)">Long break</button>
+    </div>
+    <div class="timer-btns">
+      <button class="btn primary" id="timer-toggle" onclick="toggleTimer()">Start</button>
+      <button class="btn" onclick="resetTimer()">Reset</button>
+    </div>
+
+    <!-- CUSTOM DURATION SETTINGS -->
+    <div class="timer-settings-toggle-row">
+      <button class="settings-toggle-btn" onclick="toggleTimerSettings()">⚙ Customize durations</button>
+    </div>
+    <div class="timer-settings hidden" id="timer-settings">
+      <div class="settings-row">
+        <label>Focus (min)</label>
+        <input type="number" id="set-focus" min="1" max="120" value="25" />
+      </div>
+      <div class="settings-row">
+        <label>Short break (min)</label>
+        <input type="number" id="set-short" min="1" max="60" value="5" />
+      </div>
+      <div class="settings-row">
+        <label>Long break (min)</label>
+        <input type="number" id="set-long" min="1" max="120" value="15" />
+      </div>
+      <button class="btn primary" style="width:100%;margin-top:6px;" onclick="saveTimerSettings()">Save</button>
+    </div>
+  </div>
+
+  <!-- TO-DO LIST -->
+  <div class="card">
+    <div class="card-title">To-Do List</div>
+    <div class="todo-input-row">
+      <input id="todo-input" type="text" placeholder="Add a task…" maxlength="100" />
+      <button onclick="addTodo()" title="Add task">+</button>
+    </div>
+    <!-- SORT CONTROLS -->
+    <div class="sort-row">
+      <span class="sort-label">Sort:</span>
+      <button class="sort-btn active" id="sort-btn-default" onclick="setSortOrder('default',this)">Added</button>
+      <button class="sort-btn" id="sort-btn-az"      onclick="setSortOrder('az',this)">A–Z</button>
+      <button class="sort-btn" id="sort-btn-za"      onclick="setSortOrder('za',this)">Z–A</button>
+      <button class="sort-btn" id="sort-btn-done"    onclick="setSortOrder('done',this)">Done last</button>
+    </div>
+    <ul id="todo-list"></ul>
+  </div> 
+
+<!-- QUICK LINKS -->
+  <div class="card">
+    <div class="card-title">Quick Links</div>
+    <div class="links-grid" id="links-grid"></div>
+    <button class="add-link-toggle" id="add-link-toggle" onclick="toggleAddLink()">+ Add a link</button>
+    <div class="add-link-form hidden" id="add-link-form">
+      <input id="link-label" type="text" placeholder="Label (e.g. Gmail)" maxlength="24" />
+      <input id="link-url" type="text" placeholder="URL (e.g. https://mail.google.com)" maxlength="200" />
+      <button onclick="addLink()">Save link</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

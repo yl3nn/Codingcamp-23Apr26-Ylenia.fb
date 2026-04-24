@@ -1,0 +1,5 @@
+{
+    "kiroAgent.configureMCP": "Enabled",
+    "chat.useClaudeSkills": true,
+    "chat.edits2.enabled": false
+}
